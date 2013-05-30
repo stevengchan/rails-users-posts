@@ -1,0 +1,25 @@
+<fieldset style="margin-bottom: 30px;">
+	<legend>User Information</legend>
+
+	<% if notice %>
+		<div class="alert alert-success alert-block">
+			<p>
+				<%= notice %>
+			</p>
+		</div>
+	<% end %>
+
+	<p class="offset1">
+	  <strong>Name:</strong>
+	  <%= @user.first_name %> <%= @user.last_name %>
+	</p>
+
+	<p class="offset1">
+	  <strong>Email:</strong>
+	  <%= @user.email_address %>
+	</p>
+
+</fieldset>
+
+<a href="/users/">Back to Main!</a>
+<a href="/users/new" style="margin-left: 20px;">Add New User!</a>

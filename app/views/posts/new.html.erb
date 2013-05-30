@@ -1,0 +1,33 @@
+<% content_for :title do %>
+	Add a New Post
+<% end %>
+
+<div class="content">
+		
+	<fieldset>
+		<legend>Add a New Post</legend>
+	
+		<form action="/post" method="post" class="form-horizontal">
+			<div class="control-group">
+				<label for="subject" class="control-label">Subject</label>
+				<div class="controls">
+					<input type="text" name="subject">
+				</div>
+			</div>
+			<div class="control-group">
+				<label for="message" class="control-label">Message</label>
+				<div class="controls">
+					<textarea name="message" rows="10"></textarea>
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<button type="submit" class="btn btn-info">Post!</button>
+				</div>
+			</div>
+		</form>
+
+	</fieldset>
+
+</div>
+<!-- end content -->

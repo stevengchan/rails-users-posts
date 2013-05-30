@@ -1,0 +1,53 @@
+<% content_for :title do %>
+	Add a New User
+<% end %>
+
+<fieldset>
+	<legend>Register a New User</legend>
+	
+	<!-- validation errors -->
+	<% if @user.errors.any? %>
+		<div class="alert alert-error alert-block">
+			<h5>Registration Error!</h5>
+			<% @user.errors.full_messages.each do |err| %>
+				<p><%= err %></p>
+			<% end %>
+		</div>
+	<% end %>
+
+	<form action="/users" method="post" class="form-horizontal">
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		<div class="control-group">
+			<label for="first_name" class="control-label">First Name</label>
+			<div class="controls">
+				<input type="text" name="first_name">
+			</div>
+		</div>
+		<div class="control-group">
+			<label for="last_name" class="control-label">Last Name</label>
+			<div class="controls">
+				<input type="text" name="last_name">
+			</div>
+		</div>
+		<div class="control-group">
+				<label for="email_address" class="control-label">Email</label>
+				<div class="controls">
+					<input type="text" name="email_address">
+				</div>
+		</div>
+		<div class="control-group">
+			<label for="password" class="control-label">Password</label>
+				<div class="controls">
+					<input type="password" name="password">
+				</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<button type="submit" class="btn btn-info">Register!</button>
+			</div>
+		</div>
+	</form>
+
+</fieldset>
+
+<a href="/users/">Back to Main!</a>
