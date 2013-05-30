@@ -11,6 +11,8 @@
 				<th>Name</th>
 				<th>Email</th>
 				<th></th>
+				<th></th>
+				<th></th>
 			</tr>
 		</thead>
 
@@ -23,6 +25,18 @@
 						<%= link_to(user) do %>
 							<button class="btn">Show User!</button>
 						<% end %>
+					</td>
+					<td>
+						<%= link_to(edit_user_path(user)) do %>
+							<button class="btn">Edit User!</button>
+						<% end %>
+					</td>
+					<td>
+						<form action="/users/<%= user.id %>" method="post" style="margin: 0px;">
+							<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+							<input type="hidden" name="_method" value="delete">
+							<button class="btn">Delete User!</button>
+						</form>
 					</td>
 				</tr>
 			<% end %>

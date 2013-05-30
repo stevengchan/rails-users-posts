@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     user_params = params.permit(:first_name, :last_name, :email_address, :password)
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user, notice: 'User created successfully.'
+      redirect_to @user, notice: 'User successfully created!'
     else
       render 'new'
     end
@@ -33,12 +33,19 @@ class UsersController < ApplicationController
   # PUT /users/1
   def update
     @user = User.find(params[:id])
-    user_params = params.permit(:first_name, :last_name, :email_address, :password)
+    user_params = params.permit(:first_name, :last_name, :email_address)
+    if @user.update(user_params)
+      redirect_to @user, notice: 'User successfully updated!'
+    else
+      render 'edit'
+    end
   end
 
   # DELETE /users/1
   def destroy
     @user = User.find(params[:id])
+    @user.destroy
+    redirect_to users_url
   end
 
 end

@@ -1,0 +1,49 @@
+<% content_for :title do %>
+	Edit User
+<% end %>
+
+<fieldset style="margin-bottom: 30px;">
+	<legend>Edit User</legend>
+	
+	<!-- validation errors -->
+	<% if @user.errors.any? %>
+		<div class="alert alert-error alert-block">
+			<h5>Registration Error!</h5>
+			<% @user.errors.full_messages.each do |err| %>
+				<p><%= err %></p>
+			<% end %>
+		</div>
+	<% end %>
+
+	<form action="/users/<%= @user.id %>" method="post" class="form-horizontal">
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		<input type="hidden" name="_method" value="put">
+		<div class="control-group">
+			<label for="first_name" class="control-label">First Name</label>
+			<div class="controls">
+				<input type="text" name="first_name">
+			</div>
+		</div>
+		<div class="control-group">
+			<label for="last_name" class="control-label">Last Name</label>
+			<div class="controls">
+				<input type="text" name="last_name">
+			</div>
+		</div>
+		<div class="control-group">
+				<label for="email_address" class="control-label">Email</label>
+				<div class="controls">
+					<input type="text" name="email_address">
+				</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<button type="submit" class="btn btn-info">Edit!</button>
+			</div>
+		</div>
+	</form>
+
+</fieldset>
+
+<%= link_to 'Back to Main!', users_path %>
+<%= link_to 'Show User!', @user, :style => 'margin-left: 20px;' %>
